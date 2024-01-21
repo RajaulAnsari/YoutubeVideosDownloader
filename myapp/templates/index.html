@@ -1,0 +1,31 @@
+<!-- templates/index.html -->
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Video Downloader</title>
+    <link rel="stylesheet" href="{% static 'style.css'%}">
+</head>
+<body>
+    <div class="container">
+        <h1>YouTube Video Downloader</h1>
+
+        <div class="download-box">
+            <form id="downloadForm" method="post" action="{% url 'download_video' %}">
+                {% csrf_token %}
+                <input type="text" id="video_link" name="video_link" required placeholder="Paste your youtube link here...">
+                <button type="submit">Download</button>
+            </form>
+        </div>
+
+        <div id="responseMessage" class="message-box"></div>
+
+        <div class="bottom-center-text" id="rajaulText"></div>
+    </div>
+
+    <script src="{% static 'script.js' %}"></script>
+</body>
+</html>
